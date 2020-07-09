@@ -1,43 +1,43 @@
 <template>
-  <div class="menu-item-wrap-component">
-    <template v-for="item in list">
-      <el-submenu 
-      v-show="item.isShowPage"
-      :index="item.component" 
-      v-if="item.isParent" 
-      :key="item.component" 
-      @click="clickRouter(item)">
-        <template slot="title">
-          <i class="el-icon-menu"></i>
-          <span>{{item.name}}</span>
-        </template>
-        <menuItem :toRouter="toRouter" :list="item.children"></menuItem>
-      </el-submenu>
-      <el-menu-item 
-      v-show="item.isShowPage"
-      :index="item.component" 
-      v-else :key="item.component" 
-      @click="clickRouter(item)">
-        <i class="el-icon-menu"></i>
-        <span slot="title">{{item.name}}</span>
-      </el-menu-item>
+  <el-submenu
+    v-if="list.isParent"
+    v-show="list.isShowPage"
+    :index="list.component"
+    :key="list.component"
+    @click="clickRouter(list)"
+  >
+    <template slot="title">
+      <i class="el-icon-menu"></i>
+      <span>{{list.name}}</span>
     </template>
-  </div>
+    <template v-for="menu in list.children">
+      <menuItem :toRouter="toRouter" :list="menu" :key="menu.id"></menuItem>
+    </template>
+  </el-submenu>
+  <el-menu-item
+    v-else
+    v-show="list.isShowPage"
+    :index="list.component"
+    :key="list.component"
+    @click="clickRouter(list)"
+  >
+    <i class="el-icon-menu"></i>
+    <span slot="title">{{list.name}}</span>
+  </el-menu-item>
 </template>
 
 <script>
-
 export default {
   name: "menuItem",
   props: {
-      list: {
-          type: Array,
-          default: () => []
-      },
-      toRouter: Function
+    list: {
+      type: Object,
+      default: () => {}
+    },
+    toRouter: Function
   },
   methods: {
-    clickRouter(route){
+    clickRouter(route) {
       this.toRouter(route);
       //console.log(route)
     }
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style>
-.menu-item-wrap-componen{
+.menu-item-wrap-componen {
   display: inline-block;
   text-align: left;
 }
