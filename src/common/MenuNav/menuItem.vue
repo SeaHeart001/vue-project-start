@@ -1,28 +1,28 @@
 <template>
   <el-submenu
-    v-if="list.isParent"
-    v-show="list.isShowPage"
-    :index="list.component"
-    :key="list.component"
-    @click="clickRouter(list)"
+    v-if="menuMap.isParent"
+    v-show="menuMap.isShowPage"
+    :index="menuMap.component"
+    :key="menuMap.component"
+    @click="clickRouter(menuMap)"
   >
     <template slot="title">
       <i class="el-icon-menu"></i>
-      <span>{{list.name}}</span>
+      <span>{{menuMap.name}}</span>
     </template>
-    <template v-for="menu in list.children">
-      <menuItem :toRouter="toRouter" :list="menu" :key="menu.id"></menuItem>
+    <template v-for="menu in menuMap.children">
+      <menuItem :toRouter="toRouter" :menuMap="menu" :key="menu.id" v-if="menu"></menuItem>
     </template>
   </el-submenu>
   <el-menu-item
     v-else
-    v-show="list.isShowPage"
-    :index="list.component"
-    :key="list.component"
-    @click="clickRouter(list)"
+    v-show="menuMap.isShowPage"
+    :index="menuMap.component"
+    :key="menuMap.component"
+    @click="clickRouter(menuMap)"
   >
     <i class="el-icon-menu"></i>
-    <span slot="title">{{list.name}}</span>
+    <span slot="title">{{menuMap.name}}</span>
   </el-menu-item>
 </template>
 
@@ -30,7 +30,7 @@
 export default {
   name: "menuItem",
   props: {
-    list: {
+    menuMap: {
       type: Object,
       default: () => {}
     },

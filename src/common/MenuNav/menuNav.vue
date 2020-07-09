@@ -1,13 +1,14 @@
 <template>
 <!-- horizontal / vertical -->
   <el-menu
-    mode="horizontal"
+    mode="vertical"
+    menu-trigger="hover"
     :default-active="$route.name"
     class="el-menu-vertical-demo menu-nav-wrap"
     @open="handleOpen" 
     @close="handleClose">
     <template v-for="menu in menuList">
-      <menuItem :toRouter="toRouter" :list="menu" :key="menu.id"></menuItem>
+      <menuItem :toRouter="toRouter" :menuMap="menu" :key="menu.id"></menuItem>
     </template>
   </el-menu>
 </template>
