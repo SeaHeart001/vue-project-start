@@ -1,0 +1,130 @@
+{
+    "menuList" : [
+        {
+            "name": "个人中心",
+            "id": 1,
+            "englishName": "person",
+            "component": "person",
+            "isShowPage": 1,
+            "isParent": 1,
+            "isValid": 1,
+            "icon": "el-icon-menu",
+            "children": [
+                {
+                    "name": "个人中心首页",
+                    "id": 3,
+                    "englishName": "personal",
+                    "component": "personal",
+                    "isShowPage": 1,
+                    "isParent": 0,
+                    "isValid": 1,
+                    "icon": "el-icon-menu"
+                },
+                {
+                    "name": "个人统计",
+                    "id": 5,
+                    "englishName": "personCount",
+                    "component": "personCount",
+                    "isShowPage": 1,
+                    "isParent": 1,
+                    "isValid": 1,
+                    "icon": "el-icon-menu",
+                    "children": [
+                        {
+                            "name": "消费统计",
+                            "id": 6,
+                            "englishName": "payCount",
+                            "component": "payCount",
+                            "isShowPage": 0,
+                            "isParent": 0,
+                            "isValid": 1,
+                            "icon": "el-icon-menu"
+                        },
+                        {
+                            "name": "好友统计",
+                            "id": 7,
+                            "englishName": "friendCount",
+                            "component": "friendCount",
+                            "isShowPage": 1,
+                            "isParent": 0,
+                            "isValid": 1,
+                            "icon": "el-icon-menu"
+                        }
+                    ]
+                },
+                {
+                    "name": "个人列表",
+                    "id": 11,
+                    "englishName": "personalList",
+                    "component": "personalList",
+                    "isShowPage": 1,
+                    "isParent": 0,
+                    "isValid": 1,
+                    "icon": "el-icon-menu" 
+                },
+                {
+                    "name": "个人管理",
+                    "id": 12,
+                    "englishName": "personalManage",
+                    "component": "personalManage",
+                    "isShowPage": 1,
+                    "isParent": 0,
+                    "isValid": 0,
+                    "icon": "el-icon-menu"  
+                }
+            ]
+        },
+        {
+            "name": "系统模块",
+            "id": 2,
+            "englishName": "system",
+            "component": "system",
+            "isShowPage": 1,
+            "isParent": 1,
+            "isValid": 1,
+            "icon": "el-icon-menu",
+            "children": [
+                {
+                    "name": "系统首页",
+                    "id": 4,
+                    "englishName": "systemManage",
+                    "component": "systemManage",
+                    "isShowPage": 1,
+                    "isParent": 0,
+                    "isValid": 1,
+                    "icon": "el-icon-menu"
+                },
+                {
+                    "name": "系统模型",
+                    "id": 8,
+                    "englishName": "systemModel",
+                    "component": "systemModel",
+                    "isShowPage": 1,
+                    "isParent": 0,
+                    "isValid": 1,
+                    "icon": "el-icon-menu"
+                },
+                {
+                    "name": "系统模型详情",
+                    "id": 9,
+                    "englishName": "systemModelDetial",
+                    "component": "systemModelDetail",
+                    "isShowPage": 0,
+                    "isParent": 0,
+                    "isValid": 1,
+                    "icon": "el-icon-menu"
+                },
+                {
+                    "name": "其他模块",
+                    "id": 10,
+                    "englishName": "systemOther",
+                    "component": "systemOther",
+                    "isShowPage": 0,
+                    "isParent": 0,
+                    "isValid": 0,
+                    "icon": "el-icon-menu"
+                }
+            ]
+        }
+    ]
+}
