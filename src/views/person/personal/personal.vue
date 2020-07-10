@@ -20,31 +20,7 @@ export default {
     };
   },
   methods: {
-    listTotree(list, id) {
-      let result = list
-        .filter(item => {
-          return item.pId === id;
-        })
-        .map(res => {
-          let resObj = JSON.parse(JSON.stringify(res));
-          resObj.children = listTotree(list, res.id);
-          return resObj;
-        });
-      return result;
-    },
     
-    treeToList(arr, tree) {
-      let list = [];
-      arr.forEach(item => {
-        let itemObj = JSON.parse(JSON.stringify(item));
-        itemObj.child = [];
-        list.push(itemObj);
-        if (item.child && item.child.length > 0) {
-          treeToList(list, item.child);
-        }
-      });
-      return list;
-    }
   }
 };
 </script>
