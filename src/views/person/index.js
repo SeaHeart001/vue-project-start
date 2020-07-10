@@ -1,18 +1,18 @@
 // import person from './person';
-let person = () => import('./person');
+//let person = () => import('./person');
 
-let personal = () => import('./modulePage/personal/personal');
+let personal = () => import('./personal/personal');
 
-let personalList = () => import('./modulePage/personalList/personalList');
+let personalList = () => import('./personalList/personalList');
 
-let personalManage = () => import('./modulePage/personalManage/personalManage');
+let personalManage = () => import('./personalManage/personalManage');
 
-let personCount = () => import('./modulePage/personCount/personCount');
-let friendCount = () => import('./modulePage/personCount/modulePage/friendCount/friendCount');
-let payCount = () => import('./modulePage/personCount/modulePage/payCount/payCount');
+let personCount = () => import('./personCount/personCount');
+let friendCount = () => import('./personCount/modulePage/friendCount/friendCount');
+let payCount = () => import('./personCount/modulePage/payCount/payCount');
 
 export default {
-    person,
+    //person,
     personal,
     personalList,
     personalManage,

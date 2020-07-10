@@ -2,7 +2,7 @@
 <!-- horizontal / vertical -->
   <el-menu
     mode="vertical"
-    menu-trigger="hover"
+    menu-trigger="click"
     :default-active="$route.name"
     class="el-menu-vertical-demo menu-nav-wrap"
     @open="handleOpen" 

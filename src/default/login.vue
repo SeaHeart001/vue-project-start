@@ -60,11 +60,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="stylus" scoped>
+<style lang="stylus">
 .login-wrap
   .user-login-entry
     margin 0 auto
     width 300px
+    _theme-border(1px, #333)
     .el-input
       margin 10px 0
 </style>
