@@ -3,7 +3,7 @@
     <div>
       <el-button @click="exit">exit</el-button>
     </div>
-    <div>
+    <div v-show="false">
       <MenuNav :list="menuList" />
     </div>
     <router-view></router-view>

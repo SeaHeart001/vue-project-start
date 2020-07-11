@@ -59,9 +59,115 @@ function creatRouter(menuData, callback) {
       children: myRouter
     }
   ];
-  console.log(routerList, 'menuListmenuListmenuList');
+  //console.log(routerList, 'menuListmenuListmenuList');
   router.router.addRoutes(routerList);
   callback && callback()
+}
+
+function listTotree(list, id) {
+  let result = list
+    .filter(item => {
+      return item.pId === id;
+    })
+    .map(res => {
+      let resObj = JSON.parse(JSON.stringify(res));
+      resObj.children = listTotree(list, res.id);
+      return resObj;
+    });
+  return result;
+}
+
+function treeToList(tree, arr) {
+  let list = arr || [];
+  tree.forEach(item => {
+    let itemObj = JSON.parse(JSON.stringify(item));
+    itemObj.children = [];
+    list.push(itemObj);
+    if (item.children && item.children.length > 0) {
+      treeToList(item.children, list);
+    }
+  });
+  return list;
+}
+
+//returnAllParent, returnParent有用到闭包, 请注意释放闭包
+
+function returnParent() {
+  let result;
+  return function searchParent(searchId, treeList, pId){
+    treeList.forEach(item => {
+      if (item.id === searchId) {
+        result = pId;
+        //console.log(testId);
+      } else {
+        item.child &&
+          item.child.length &&
+          searchParent(searchId, item.child, item.id);
+      }
+    });
+    return result
+  }
+}
+
+function returnParent2(searchId, treeList, pId) {
+  let result;
+  function searchParent(searchId, treeList, pId) {
+    treeList.forEach(item => {
+      if (item.id === searchId) {
+        result = pId;
+        //console.log(testId);
+      } else {
+        item.child &&
+          item.child.length &&
+          searchParent(searchId, item.child, item.id);
+      }
+    });
+  };
+  searchParent(searchId, treeList, pId)
+  return result
+}
+
+function returnAllParent(treeList) {
+  let result = [];
+  let _treeList = JSON.parse(JSON.stringify(treeList));
+  return function searchAllParent(searchId, treeList, pData) {
+    treeList.forEach(item => {
+      if (item.id === searchId) {
+        //console.log(testId);
+        if (pData&&pData.id) {
+          result.push(pData);
+          searchAllParent(pData.id, _treeList);
+        }
+      } else {
+        item.child &&
+          item.child.length &&
+          searchAllParent(searchId, item.child, item);
+      }
+    });
+    return result;
+  };
+}
+
+function returnAllParent2(searchId, treeList, pData) {
+  let result = [];
+  let _treeList = JSON.parse(JSON.stringify(treeList));
+  function searchAllParent(searchId, treeList, pData) {
+    treeList.forEach(item => {
+      if (item.id === searchId) {
+        //console.log(testId);
+        if (pData && pData.id) {
+          result.push(pData);
+          searchAllParent(pData.id, _treeList);
+        }
+      } else {
+        item.child &&
+          item.child.length &&
+          searchAllParent(searchId, item.child, item);
+      }
+    });
+  };
+  searchAllParent(searchId, treeList, pData)
+  return result
 }
 
 Vue.prototype.$storage = storage
