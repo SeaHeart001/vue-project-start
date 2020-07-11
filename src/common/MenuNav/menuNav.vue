@@ -1,10 +1,11 @@
 <template>
 <!-- horizontal / vertical -->
   <el-menu
+    v-show="true"
     mode="vertical"
-    menu-trigger="click"
+    menu-trigger="hover"
     :default-active="$route.name"
-    class="el-menu-vertical-demo menu-nav-wrap"
+    class="menu-nav-wrap"
     @open="handleOpen" 
     @close="handleClose">
     <template v-for="menu in menuList">
