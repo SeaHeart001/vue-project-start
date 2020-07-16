@@ -42,7 +42,14 @@ export default {
       this.$httpServer({
         method: "post",
         url: "/api/menu",
-        data: this.$qs(data)
+        data: this.$qs(data),
+        loading: true,
+        loadingConfig: {
+          lock: true,
+          text: 'Loading....',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        }
       }).then(res => {
         console.log(res.data, "menuList");
         this.$storage.set("menuList", res.data);

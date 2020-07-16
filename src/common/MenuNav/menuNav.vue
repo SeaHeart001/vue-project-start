@@ -2,7 +2,7 @@
 <!-- horizontal / vertical -->
   <el-menu
     v-show="true"
-    mode="vertical"
+    mode="horizontal"
     menu-trigger="hover"
     :default-active="$route.name"
     class="menu-nav-wrap"

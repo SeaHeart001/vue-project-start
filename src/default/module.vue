@@ -4,9 +4,11 @@
       <el-button @click="exit">exit</el-button>
     </div>
     <div>
-      <MenuNav :list="menuList"/>
+      <MenuNav :list="menuList" />
     </div>
-    <router-view></router-view>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

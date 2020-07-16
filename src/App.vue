@@ -19,31 +19,37 @@ export default {
     ...mapActions(['actionsConsoleLog'])
   },
   mounted(){
-
+    //测试vuex
     console.log(
       this.appMsg, 
       this.computedGetterMsg,
     'vuexxx')
-
     this.actionsConsoleLog({a:123})
 
 
 
-    //console.log('post');
+    //测试$http
     var formData = new FormData();
     var file = new File([], 'file');
     formData.append('a', 1);
     formData.append('file', file);
     //this.$qs({a:1, b:2});
-    return
+    //return
     this.$httpServer({
       method: 'post',
       url: '/api/test',
       configData: true,
       data: formData,
+      loading: true,
+      loadingConfig: {
+        lock: true,
+        text: 'Loading....',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      }
       //responseType: 'blob'
     }).then(data => {
-      console.log(data, 'httpServer')
+      //console.log(data, 'httpServer')
     })
   }
 }

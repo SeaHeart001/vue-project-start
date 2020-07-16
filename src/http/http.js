@@ -5,8 +5,12 @@ import qs from 'qs';
 console.log(basePath, 'basePath');
 const axios = Axios.create(basePath);
 
-//请求拦截器
+let loading;
 axios.interceptors.request.use( config => { 
+    console.log(config, 'requestconfigconfig');
+    if(config.loading){
+        loading = Vue.prototype.$loading(config.loadingConfig || {})
+    }
     config.headers.authorization = window.localStorage.getItem('authorization') || 'authorization';
     return config
 }, error => {
@@ -16,6 +20,7 @@ axios.interceptors.request.use( config => {
 
 //响应拦截器
 axios.interceptors.response.use( response => {
+    console.log(response, 'responseresponse')
     if(response.code === 403){
         confirm('登录凭证过期或异常, 请重新登录');
         window.location.href = '/';
@@ -28,8 +33,10 @@ axios.interceptors.response.use( response => {
     }
     
     if(response.config.configData === true){
+        loading && loading.close();
         return response
     }
+    loading && loading.close();
     return response.data
 }, error =>{
     confirm('请求服务异常response');
