@@ -23,7 +23,7 @@ axios.interceptors.response.use( response => {
     //console.log(response, 'responseresponse')
     if(response.code === 403){
         confirm('登录凭证过期或异常, 请重新登录');
-        window.location.href = '/';
+        window.location.href = './';
         return
     }
     if(response.headers.authorization){

@@ -29,9 +29,14 @@ export default {
         type: "warning"
       })
         .then(_ => {
+          //debugger
           this.$storage.remove("menuList");
           this.$storage.remove("authorization");
-          window.location.href = "/";
+          this.$router.push({
+            path: '/'
+          });
+          window.location.reload();
+          //window.location.href = "./";
         })
         .catch(e => {});
     }
