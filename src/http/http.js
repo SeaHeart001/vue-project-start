@@ -27,9 +27,9 @@ axios.interceptors.response.use( response => {
         return
     }
     if(response.headers.authorization){
-        window.localStorage.setItem('authorization', response.headers.authorization || 'authorization')
+        window.localStorage.setItem('authorization', response.headers.authorization)
     }else{
-        window.localStorage.setItem('authorization', response.headers.authorization || 'authorization')
+        window.localStorage.setItem('authorization', 'authorization')
     }
     
     if(response.config.configData === true){
