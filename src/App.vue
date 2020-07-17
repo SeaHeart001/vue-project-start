@@ -34,7 +34,7 @@ export default {
     formData.append('a', 1);
     formData.append('file', file);
     //this.$qs({a:1, b:2});
-    //return
+    return
     this.$httpServer({
       method: 'post',
       url: '/api/test',

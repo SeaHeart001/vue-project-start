@@ -7,7 +7,7 @@ const axios = Axios.create(basePath);
 
 let loading;
 axios.interceptors.request.use( config => { 
-    console.log(config, 'requestconfigconfig');
+    //console.log(config, 'requestconfigconfig');
     if(config.loading){
         loading = Vue.prototype.$loading(config.loadingConfig || {})
     }
@@ -20,7 +20,7 @@ axios.interceptors.request.use( config => {
 
 //响应拦截器
 axios.interceptors.response.use( response => {
-    console.log(response, 'responseresponse')
+    //console.log(response, 'responseresponse')
     if(response.code === 403){
         confirm('登录凭证过期或异常, 请重新登录');
         window.location.href = '/';

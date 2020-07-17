@@ -1,5 +1,8 @@
 <template>
-  <div>personal</div>
+  <div>
+    personal
+    <el-button @click="toErrorPath">toErrorPath</el-button>
+  </div>
 </template>
 
 <script>
@@ -14,7 +17,15 @@ export default {
     
   },
   methods: {
-    
+    toErrorPath(){
+      // this.$router.push({
+      //   name: 'dasdad'
+      // })
+      // return
+      this.$router.push({
+        path: './adasdad'
+      })
+    }
   }
 };
 </script>
