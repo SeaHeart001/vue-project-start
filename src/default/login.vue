@@ -2,7 +2,7 @@
   <div class="login-wrap">
     <img src="../assets/logo.png" />
     <div class="user-login-entry">
-      <h1>First vue start</h1>
+      <h1>vue start</h1>
       <el-input></el-input>
       <el-input></el-input>
       <el-button @click="toLogin">login</el-button>
