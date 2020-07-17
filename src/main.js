@@ -47,8 +47,9 @@ router.router.beforeEach((to, from, next) => {
         next('/');
         window.location.reload();
       });
+      return
     }
-    return
+    
   }
 
   if(to.name === null || (to.name && to.path == "/")){
