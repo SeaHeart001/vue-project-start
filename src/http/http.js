@@ -8,7 +8,7 @@ const axios = Axios.create(basePath);
 let loading;
 axios.interceptors.request.use( config => { 
     //console.log(config, 'requestconfigconfig');
-    if(config.loading){
+    if(config.loading || config.loadingConfig){
         loading = Vue.prototype.$loading(config.loadingConfig || {})
     }
     config.headers.authorization = window.localStorage.getItem('authorization') || 'authorization';

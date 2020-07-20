@@ -51,10 +51,10 @@ export default {
           background: 'rgba(0, 0, 0, 0.7)'
         }
       }).then(res => {
-        console.log(res.data, "menuList");
+        //console.log(res.data, "menuList");
         this.$storage.set("menuList", res.data);
         this.$creatRouter(res.data, () => {
-          console.log(this);
+          //console.log(this);
           //replace不生成历史记录
           this.$router.replace({
             name: res.data[0].name

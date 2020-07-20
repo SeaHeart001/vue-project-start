@@ -17,6 +17,9 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
+#preview
+https://seaheart001.github.io/vue-project-start/
+
 
 
 
