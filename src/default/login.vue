@@ -43,8 +43,8 @@ export default {
         method: "post",
         url: "/api/menu",
         data: this.$qs(data),
-        loading: true,
-        loadingConfig: {
+        // loading: true,
+        loading: {
           lock: true,
           text: 'Loading....',
           spinner: 'el-icon-loading',

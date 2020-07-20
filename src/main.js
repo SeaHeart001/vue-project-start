@@ -43,9 +43,9 @@ router.router.beforeEach((to, from, next) => {
       }).then(_ => {
         Vue.prototype.$storage.remove('menuList');
         Vue.prototype.$storage.remove('authorization');
-        //window.location.href = './';
-        next('/');
-        window.location.reload();
+        window.location.href = './';
+        //next('/');
+        //window.location.reload();
       });
       return
     }
