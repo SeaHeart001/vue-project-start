@@ -41,7 +41,7 @@ router.router.beforeEach((to, from, next) => {
       Vue.prototype.$confirm('登录凭证无效,请重新登录', '提示', {
         type: 'error'
       }).then(_ => {
-        Vue.prototype.$storage.remove('menuList');
+        //Vue.prototype.$storage.remove('menuList');
         Vue.prototype.$storage.remove('authorization');
         window.location.href = './';
         //next('/');

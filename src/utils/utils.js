@@ -58,14 +58,18 @@ function creatRouter(menuData, callback) {
       redirect: myRouter[0].fullPath,
       children: myRouter
     },
+    //动态添加404放在最后，用*匹配
     {
       path: '*',
       redirect: '/404',
       //component: router.menu.page404,
     }
-    //动态添加404放在最后，用*匹配
+    
   ];
   //console.log(routerList, 'menuListmenuListmenuList');
+
+  //每次addRoutes添加路由时先初始化路由matcher
+  router.router.matcher = router.routerInit().matcher;
   router.router.addRoutes(routerList);
   callback && callback()
 }

@@ -29,7 +29,7 @@ menu.module = module;
 //添加404空白页
 menu.page404 = page404;
 
-let router = new Router({
+let routerInit = () => new Router({
   routes: [
     {
       path: '/',
@@ -46,6 +46,8 @@ let router = new Router({
       component: page404
     }
   ]
-})
+});
 
-export default {router, menu}
+let router = routerInit()
+
+export default {router, menu, routerInit}

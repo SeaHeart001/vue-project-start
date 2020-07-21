@@ -30,7 +30,7 @@ export default {
       })
         .then(_ => {
           //debugger
-          this.$storage.remove("menuList");
+          //this.$storage.remove("menuList");
           this.$storage.remove("authorization");
           // this.$router.push({
           //   path: '/'
