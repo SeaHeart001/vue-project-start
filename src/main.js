@@ -49,16 +49,10 @@ router.router.beforeEach((to, from, next) => {
       });
       return
     }
-    
-  }
-
-  if(to.name === null || (to.name && to.path == "/")){
-    //console.log('to404', next);
-    next('/404');
-    return
   }
 
   next()
+  
 });
 /* eslint-disable no-new */
 new Vue({

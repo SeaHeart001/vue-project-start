@@ -26,6 +26,8 @@ let menu = {
 }
 //添加一个默认壳子module,方便修改布局
 menu.module = module;
+//添加404空白页
+menu.page404 = page404;
 
 let router = new Router({
   routes: [
@@ -37,12 +39,12 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: login
-    },
-    {
-      path: '/404',
-      name: '404',
-      component: page404
     }
+    // {
+    //   path: '/404',
+    //   name: '404',
+    //   component: page404
+    // }
   ]
 })
 

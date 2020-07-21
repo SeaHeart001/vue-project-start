@@ -57,7 +57,13 @@ function creatRouter(menuData, callback) {
       component: router.menu.module,
       redirect: myRouter[0].fullPath,
       children: myRouter
+    },
+    {
+      path: '*',
+      name: "404",
+      component: router.menu.page404,
     }
+    //动态添加404放在最后，用*匹配
   ];
   //console.log(routerList, 'menuListmenuListmenuList');
   router.router.addRoutes(routerList);
