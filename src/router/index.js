@@ -39,12 +39,12 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: page404
     }
-    // {
-    //   path: '/404',
-    //   name: '404',
-    //   component: page404
-    // }
   ]
 })
 

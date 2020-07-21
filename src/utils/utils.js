@@ -60,8 +60,8 @@ function creatRouter(menuData, callback) {
     },
     {
       path: '*',
-      name: "404",
-      component: router.menu.page404,
+      redirect: '/404',
+      //component: router.menu.page404,
     }
     //动态添加404放在最后，用*匹配
   ];
