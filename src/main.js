@@ -51,6 +51,11 @@ router.router.beforeEach((to, from, next) => {
     }
   }
 
+  if(to.matched.length === 0){
+    next('/404');
+    return
+  }
+
   next()
   
 });

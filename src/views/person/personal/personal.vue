@@ -1,7 +1,8 @@
 <template>
   <div>
-    personal
-    <el-button @click="toErrorPath">toErrorPath</el-button>
+    <div>personal</div>
+    <el-button @click="toErrorRouteByName">toErrorRouteByName</el-button>
+    <el-button @click="toErrorRouteByPath">toErrorRouteByPath</el-button>
   </div>
 </template>
 
@@ -17,11 +18,14 @@ export default {
     
   },
   methods: {
-    toErrorPath(){
-      // this.$router.push({
-      //   name: 'dasdad'
-      // })
-      // return
+    toErrorRouteByName(){
+      this.$router.push({
+        name: 'dasdad'
+      })
+    
+    },
+    toErrorRouteByPath(){
+      
       this.$router.push({
         path: './adasdad'
       })
