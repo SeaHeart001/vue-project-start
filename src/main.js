@@ -38,6 +38,12 @@ router.router.beforeEach((to, from, next) => {
   if(to.name !== 'login'){
     
     if(!authorization){
+
+      if(from.name === 'login'){
+        next('/');
+        return
+      }
+      
       Vue.prototype.$confirm('登录凭证无效,请重新登录', '提示', {
         type: 'error'
       }).then(_ => {
