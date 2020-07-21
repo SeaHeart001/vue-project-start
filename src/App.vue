@@ -26,15 +26,13 @@ export default {
     'vuexxx')
     this.actionsConsoleLog({a:123})
 
-
-
     //测试$http
     var formData = new FormData();
     var file = new File([], 'file');
     formData.append('a', 1);
     formData.append('file', file);
     //this.$qs({a:1, b:2});
-    //return
+    return
     this.$httpServer({
       method: 'post',
       url: '/api/test',

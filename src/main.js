@@ -51,7 +51,7 @@ router.router.beforeEach((to, from, next) => {
     }
   }
 
-  if(to.matched.length === 0){
+  if(to.matched.length === 0 && from.name){
     next('/404');
     return
   }

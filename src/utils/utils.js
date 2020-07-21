@@ -33,6 +33,7 @@ function getRouter(menuList, level, parent = {}) {
     let component = router.menu[item.englishName];
     if (item.isParent == 1) {
       //!component && item.isParent == 1
+      //生成父路由壳子
       component = Vue.component(item.name, {
         template: '<router-view></router-view>'
       })
