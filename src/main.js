@@ -11,7 +11,7 @@ Vue.use(ElementUI)
 import _ from 'lodash';
 
 import httpServer from '@/http/http';
-Vue.prototype.$httpServer = httpServer
+Vue.prototype.$httpServer = httpServer;
 
 import '@/mockServer/mockServer.js';
 
@@ -20,9 +20,10 @@ import '@/utils/utils'
 Vue.config.productionTip = false
 
 // console.log(Vue.prototype, this.$creatRouter,  '123123');
-if(Vue.prototype.$storage.get('menuList')){
+const tool = Vue.prototype;
+if(tool.$storage.get('menuList')){
   //debugger
-  Vue.prototype.$creatRouter();
+  tool.$creatRouter();
 }
 
 router.router.beforeEach((to, from, next) => {
@@ -31,8 +32,8 @@ router.router.beforeEach((to, from, next) => {
   
   if(to.name === 'login'){
     
-    Vue.prototype.$storage.remove('menuList');
-    Vue.prototype.$storage.remove('authorization');
+    tool.$storage.remove('menuList');
+    tool.$storage.remove('authorization');
   }
 
   if(to.name !== 'login'){
@@ -44,11 +45,11 @@ router.router.beforeEach((to, from, next) => {
         return
       }
       
-      Vue.prototype.$confirm('登录凭证无效,请重新登录', '提示', {
+      tool.$confirm('登录凭证无效,请重新登录', '提示', {
         type: 'error'
       }).then(_ => {
         //Vue.prototype.$storage.remove('menuList');
-        Vue.prototype.$storage.remove('authorization');
+        tool.$storage.remove('authorization');
         window.location.href = './';
         //next('/');
         //window.location.reload();

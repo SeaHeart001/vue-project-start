@@ -10,7 +10,7 @@ let storage = {
     window.localStorage.setItem(key, JSON.stringify(value))
   },
 
-  remove(key){
+  remove(key) {
     window.localStorage.removeItem(key)
   }
 }
@@ -33,7 +33,8 @@ function getRouter(menuList, level, parent = {}) {
     let component = router.menu[item.englishName];
     if (item.isParent == 1) {
       //!component && item.isParent == 1
-      //生成父路由壳子
+      //上面表示如果找到对应路由壳子组件, 则用自己创建的, 没找到则-->
+      //生成路由壳子
       component = Vue.component(item.name, {
         template: '<router-view></router-view>'
       })
@@ -67,9 +68,9 @@ function creatRouter(menuData, callback) {
     }
     
   ];
-  //console.log(routerList, 'menuListmenuListmenuList');
+  // console.log(routerList, 'menuListmenuListmenuList');
 
-  //每次addRoutes添加路由时先初始化路由matcher
+  // 每次addRoutes添加路由时先初始化路由matcher
   router.router.matcher = router.routerInit().matcher;
   router.router.addRoutes(routerList);
   callback && callback()
@@ -92,7 +93,7 @@ function treeToList(tree, arr) {
   let list = arr || [];
   tree.forEach(item => {
     let itemObj = JSON.parse(JSON.stringify(item));
-    itemObj.children = [];
+    //itemObj.children = [];
     list.push(itemObj);
     if (item.children && item.children.length > 0) {
       treeToList(item.children, list);
@@ -179,6 +180,26 @@ function returnAllParent2(searchId, treeList, pData) {
   };
   searchAllParent(searchId, treeList, pData)
   return result
+}
+
+function twoSort(arr){
+  //最后当数组长度只有一的时候，不再往下执行
+  if (arr.length<=1) {
+    return arr;
+  }
+  var middle=arr.splice(Math.floor(arr.length/2),1);
+  var leftArr=[];
+  var rightArr=[];
+  for(var i=0; i<arr.length; i++){
+     if(parseInt(arr[i])<=middle){
+       leftArr.push(arr[i]);       //把比中间值小的放一个数组
+     }else{
+       rightArr.push(arr[i]);      //把比中间值大的放另一个数组
+     }
+  }
+  //concat() 方法用于连接两个或多个数组。
+  //再对小数组继续回调上面的分组方法
+  return this.twoSort(leftArr).concat(middle, this.twoSort(rightArr));
 }
 
 Vue.prototype.$storage = storage
