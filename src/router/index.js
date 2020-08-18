@@ -50,4 +50,4 @@ let routerInit = () => new Router({
 
 let router = routerInit()
 
-export default {router, menu, routerInit}
+export default { router, menu, routerInit }
