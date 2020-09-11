@@ -7,6 +7,9 @@ import router from './router'
 import ElementUI  from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+import go from 'gojs';
+Vue.use(go);
+
 
 import _ from 'lodash';
 
@@ -15,11 +18,11 @@ Vue.prototype.$httpServer = httpServer;
 
 import '@/mockServer/mockServer.js';
 
-import '@/utils/utils'
+import '@/utils/utils';
 
 Vue.config.productionTip = false
 
-// console.log(Vue.prototype, this.$creatRouter,  '123123');
+// console.log(Vue.prototype, this.$creatRouter, '123123');
 const tool = Vue.prototype;
 if(tool.$storage.get('menuList')){
   //debugger
