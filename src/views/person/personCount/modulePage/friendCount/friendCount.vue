@@ -14,27 +14,19 @@
         <button id="SaveButton" @click="save()">Save</button>
         <button @click="loadGo()">Load</button>
       </div>
-      <textarea id="mySavedModel" style="width:100%; height:270px;">{ "class": "go.TreeModel",
-  "nodeDataArray": [
-{"key":1, "name":"Stella Payne Diaz", "title":"CEO"},
-{"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":1},
-{"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "parent":2},
-{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":1},
-{"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "parent":4},
-{"key":6, "name":"Al Ligori", "title":"Marketing", "parent":2},
-{"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "parent":3},
-{"key":8, "name":"Les Ismore", "title":"Project Mgr", "parent":5},
-{"key":9, "name":"April Lynn Parris", "title":"Events Mgr", "parent":6},
-{"key":10, "name":"Xavier Breath", "title":"Engineering", "parent":4},
-{"key":11, "name":"Anita Hammer", "title":"Process", "parent":5},
-{"key":12, "name":"Billy Aiken", "title":"Software", "parent":10},
-{"key":13, "name":"Stan Wellback", "title":"Testing", "parent":10},
-{"key":14, "name":"Marge Innovera", "title":"Hardware", "parent":10},
-{"key":15, "name":"Evan Elpus", "title":"Quality", "parent":5},
-{"key":16, "name":"Lotta B. Essen", "title":"Sales Rep", "parent":3}
- ]
-}
-    </textarea>
+      <textarea id="mySavedModel" style="width:100%; height:270px;">
+        { 
+          "class": "go.TreeModel",
+          "nodeDataArray": [
+            {"key":1, "name":"庆帝", "title":"主题圈", "orgName":"庆国", "level":"皇帝", "relation": "庆国一哥"},
+            {"key":2, "name":"范闲", "title":"朋友圈", "parent":1, "orgName":"检察院", "level":"提司", "relation": "儿子"},
+            {"key":3, "name":"范思哲", "title":"亲戚圈", "parent":2, "orgName":"林家大院", "level":"搞笑担当", "relation": "傻弟弟"},
+            {"key":4, "name":"范若若", "title":"朋友圈", "parent":1, "orgName":"林家大院", "level":"颜值担当", "relation": "妹妹"},
+            {"key":5, "name":"腾子荆", "title":"朋友圈", "parent":4, "orgName":"检察院", "level":"护卫", "relation": "同事"},
+            {"key":6, "name":"林宛儿", "title":"同事圈", "parent":2, "orgName":"丞相府", "level":"大小姐", "relation": "妻子"}
+          ]
+        }
+      </textarea>
     </div>
   </div>
 </template>
@@ -62,11 +54,10 @@ export default {
           {
             maxSelectionCount: 1, // users can select only one part at a time
             validCycle: go.Diagram.CycleDestinationTree, // make sure users can only create trees
-            "clickCreatingTool.archetypeNodeData": { // allow double-click in background to create a new node
-              name: "(new person)",
-              title: "",
-              comments: ""
-            },
+            // "clickCreatingTool.archetypeNodeData": { // allow double-click in background to create a new node
+            //   name: "(new person)",
+            //   title: "",
+            // },
             "clickCreatingTool.insertPart": function(loc) {  // scroll to the new node
               var node = go.ClickCreatingTool.prototype.insertPart.call(this, loc);
               if (node !== null) {
@@ -154,9 +145,11 @@ export default {
           this.myDiagram.startTransaction("add employee");
           //新加模块
           var newemp = {
-            name: "(new person)",
-            title: "",
-            comments: "",
+            name: "(姓名)",
+            title: "(圈名)",
+            orgName: "(单位)",
+            level: "(职位)",
+            relation: "(关系)",
             parent: thisemp.key
           };
           this.myDiagram.model.addNodeData(newemp);
@@ -231,55 +224,63 @@ export default {
               portId: "", fromLinkable: true, toLinkable: true, cursor: "pointer"
             }),
           $(go.Panel, "Horizontal",
-            $(go.Picture,
-              {
-                name: "Picture",
-                desiredSize: new go.Size(70, 70),
-                margin: 1.5,
-              },
-              new go.Binding("source", "key", findHeadShot)),
-            // define the panel where the text will appear
+            
             $(go.Panel, "Table",
               {
-                minSize: new go.Size(130, NaN),
-                maxSize: new go.Size(150, NaN),
-                margin: new go.Margin(6, 10, 0, 6),
+                // minSize: new go.Size(130, NaN),
+                // maxSize: new go.Size(150, NaN),
+                margin: new go.Margin(10, 10, 10, 10),
                 defaultAlignment: go.Spot.Left
               },
-              $(go.RowColumnDefinition, { column: 2, width: 4 }),
+              //$(go.RowColumnDefinition, { column: 2, width: 4 }),
+
               $(go.TextBlock, textStyle(),  // the name
                 {
-                  row: 0, column: 0, columnSpan: 5,
+                  row: 0, column: 0,
                   font: "12pt Segoe UI,sans-serif",
                   editable: true, isMultiline: false,
-                  minSize: new go.Size(10, 16)
+                  margin: new go.Margin(0, 0, 4, 0)
+                  // minSize: new go.Size(55, 20),
+                  // maxSize: new go.Size(160, 20),
                 },
                 new go.Binding("text", "name").makeTwoWay()),
-              $(go.TextBlock, "Title000: ", textStyle(),
-                { row: 1, column: 0 }),
+
               $(go.TextBlock, textStyle(),
                 {
-                  row: 1, column: 1, columnSpan: 4,
+                  row: 0, column: 1,
                   editable: true, isMultiline: false,
-                  minSize: new go.Size(10, 14),
-                  margin: new go.Margin(0, 0, 0, 3)
+                  // minSize: new go.Size(60, 20),
+                  // maxSize: new go.Size(60, 20),
+                  // minSize: new go.Size(10, 14),
+                  margin: new go.Margin(0, 0, 0, 10)
                 },
                 new go.Binding("text", "title").makeTwoWay()),
+
+                // $(go.TextBlock, "Title000: ", textStyle(),
+              //   { row: 1, column: 0 }),
               $(go.TextBlock, textStyle(),
-                { row: 2, column: 0 },
-                new go.Binding("text", "key", function(v) { return "ID111: " + v; })),
-              $(go.TextBlock, textStyle(),
-                { name: "boss", row: 2, column: 3, }, // we include a name so we can access this TextBlock when deleting Nodes/Links
-                new go.Binding("text", "parent", function(v) { return "Boss222: " + v; })),
-              $(go.TextBlock, textStyle(),  // the comments
                 {
-                  row: 3, column: 0, columnSpan: 5,
-                  font: "italic 9pt sans-serif",
-                  wrap: go.TextBlock.WrapFit,
-                  editable: true,  // by default newlines are allowed
-                  minSize: new go.Size(10, 14)
+                  row: 1, column: 0,
+                  editable: true, isMultiline: false,
+                  margin: new go.Margin(4, 0, 10, 0)
                 },
-                new go.Binding("text", "comments").makeTwoWay())
+                new go.Binding("text", "orgName").makeTwoWay()),
+
+              $(go.TextBlock, textStyle(),
+                {
+                  row: 1, column: 1,
+                  editable: true, isMultiline: false,
+                  margin: new go.Margin(4, 0, 10, 10)
+                },
+                new go.Binding("text", "level").makeTwoWay()),
+
+              $(go.TextBlock, "关系 : ", textStyle(),
+                { row: 2, column: 0 }),
+                
+              $(go.TextBlock, textStyle(),
+                { row: 2, column: 1, editable: true, isMultiline: false, },
+                new go.Binding("text", "relation").makeTwoWay()),
+
             )  // end Table Panel
           ) // end Horizontal Panel
         );  // end Node
@@ -298,8 +299,11 @@ export default {
                   var thisemp = node.data;
                   this.myDiagram.startTransaction("vacate");
                   // update the key, name, and comments
-                  this.myDiagram.model.setDataProperty(thisemp, "name", "(Vacant)");
-                  this.myDiagram.model.setDataProperty(thisemp, "comments", "");
+                  this.myDiagram.model.setDataProperty(thisemp, "name", "(姓名)");
+                  this.myDiagram.model.setDataProperty(thisemp, "title", "(圈名)");
+                  this.myDiagram.model.setDataProperty(thisemp, "orgName", "(单位)");
+                  this.myDiagram.model.setDataProperty(thisemp, "level", "(职位)");
+                  this.myDiagram.model.setDataProperty(thisemp, "relation", "(关系)");
                   this.myDiagram.commitTransaction("vacate");
                 }
               }
