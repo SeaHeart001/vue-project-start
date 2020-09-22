@@ -6,7 +6,9 @@ import page404 from '@/default/404'
 import module from '@/default/module'
 
 import personModule from '@/views/person';
-//console.log(personModule, 'personModule')
+//console.log(personModule, 'personModule');
+
+import topPageOther from '@/views/topPageOther/topPageOther'
 
 //解决重复点击路由报错问题START
 const originalReplace = Router.prototype.replace;
@@ -22,7 +24,9 @@ Router.prototype.push = function push(location) {
 Vue.use(Router)
 
 let menu = {
-  ...personModule
+  ...personModule,
+  
+  topPageOther
 }
 //添加一个默认壳子module,方便修改布局
 menu.module = module;

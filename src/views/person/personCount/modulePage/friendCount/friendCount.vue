@@ -278,7 +278,7 @@ export default {
                 { row: 2, column: 0 }),
                 
               $(go.TextBlock, textStyle(),
-                { row: 2, column: 1, editable: true, isMultiline: false, },
+                { row: 2, column: 1, editable: true, isMultiline: false },
                 new go.Binding("text", "relation").makeTwoWay()),
 
             )  // end Table Panel

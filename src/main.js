@@ -8,7 +8,7 @@ import ElementUI  from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 import go from 'gojs';
-Vue.use(go);
+//Vue.use(go);
 
 
 import _ from 'lodash';

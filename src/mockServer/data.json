@@ -125,8 +125,19 @@
                     "icon": "el-icon-menu"
                 }
             ]
+        },
+        {
+            "name": "一级页面菜单",
+            "id": 11,
+            "englishName": "topPageOther",
+            "component": "topPageOther",
+            "isShowPage": 1,
+            "isParent": 0,
+            "isValid": 1,
+            "icon": "el-icon-menu"
         }
     ],
+
     "treeList": [
         {
           "id": 1,
