@@ -1,2 +1,0 @@
-webpackJsonp([5],{"4D0e":function(e,n){},cGQv:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("friendCount")])},staticRenderFns:[]};var i=t("VU/8")({name:"friendCount"},r,!1,function(e){t("4D0e")},null,null);n.default=i.exports}});
-//# sourceMappingURL=5.646d5323c5b15319142a.js.map
