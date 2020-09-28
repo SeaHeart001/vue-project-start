@@ -56,7 +56,9 @@ export default {
 <style lang="stylus">
 // 此处reset全局样式, 不要用scoped
 @import '../static/reset.css';
-
+.el-checkbox{
+  margin-right 0  
+}
 #app-wrap 
   height 100%
   text-align center
