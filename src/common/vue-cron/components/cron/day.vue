@@ -21,7 +21,8 @@
       <span style="margin-left: 5px; margin-right: 5px;">日开始，每</span>
       <el-input-number @change="type = '3'" v-model="loop.end" :min="1" :max="31" size="mini" style="width: 100px;"></el-input-number>
       日执行一次
-    </div>
+    </div> 
+    
     <div>
       <el-radio v-model="type" label="8" size="mini" border>工作日</el-radio>
       <span style="margin-left: 10px; margin-right: 5px;">本月</span>
