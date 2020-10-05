@@ -1,25 +1,33 @@
 <template>
-  <el-table
-    :id="`t${tableId}`"
-    :data="tableData"
-    v-bind="$attrs"
-  >
-  <!-- 拖拽表格我感觉序号没啥意义-->
-    <el-table-column v-if="false" label="序号" type="index">
-        <template slot-scope="scope">
-            <slot v-bind:index="scope.$index" name="index"></slot>
+  <el-table :id="`t${tableId}`" :data="tableData" v-bind="$attrs">
+    <!-- 拖拽表格我感觉序号没啥意义-->
+    <template v-for="(item, index) in col">
+      <!-- 操作列/自定义列 -->
+      <el-table-column
+        v-if="item.isSlot"
+        :key="`col_${index}`"
+        :prop="dropCol[index].prop"
+        :label="item.label"
+      >
+        <template v-if="item.isSlotHeader" slot="header"> 
+          <slot :name="item.prop + `Header`" :data="item"></slot>
         </template>
-    </el-table-column>
-    <el-table-column
-      v-for="(item, index) in col"
-      :key="`col_${index}`"
-      :prop="dropCol[index].prop"
-      :label="item.label"
-    >
-      <template slot-scope="scope">
-        <slot v-bind:data="tableData[scope.$index]" :name="dropCol[index].prop"></slot>
-      </template>
-    </el-table-column>
+        <template slot-scope="scope"> 
+          <slot :name="item.prop" :data="tableData[scope.$index]"></slot>
+        </template>
+        
+      </el-table-column>
+      
+      <!-- 普通列 -->
+      <el-table-column
+        v-else
+        :key="`col_${index}`"
+        :prop="dropCol[index].prop"
+        :label="item.label"
+        v-bind="item"
+      >
+      </el-table-column>
+    </template>
   </el-table>
 </template>
 
@@ -36,53 +44,14 @@ export default {
     col: {
       type: Array,
       default: () => {
-        return [
-          {
-            label: "日期",
-            prop: "date",
-            isSlot: true
-          },
-          {
-            label: "姓名",
-            prop: "name",
-          },
-          {
-            label: "地址",
-            prop: "address",
-          },
-        ];
+        return [];
       },
     },
 
     tableData: {
       type: Array,
       default: () => {
-        return [
-          {
-            id: "1",
-            date: "2016-05-02",
-            name: "王小虎1",
-            address: "上海市普陀区金沙江路 100 弄",
-          },
-          {
-            id: "2",
-            date: "2016-05-04",
-            name: "王小虎2",
-            address: "上海市普陀区金沙江路 200 弄",
-          },
-          {
-            id: "3",
-            date: "2016-05-01",
-            name: "王小虎3",
-            address: "上海市普陀区金沙江路 300 弄",
-          },
-          {
-            id: "4",
-            date: "2016-05-03",
-            name: "王小虎4",
-            address: "上海市普陀区金沙江路 400 弄",
-          },
-        ];
+        return [];
       },
     },
   },
@@ -120,16 +89,21 @@ export default {
         },
       });
     },
+
     //列拖拽
     columnDrop() {
-      const wrapperTr = document.querySelector("#t" + this.tableId + " .el-table__header-wrapper tr");
+      const wrapperTr = document.querySelector(
+        "#t" + this.tableId + " .el-table__header-wrapper tr"
+      );
       Sortable.create(wrapperTr, {
         animation: 180,
         delay: 0,
         onEnd: (evt) => {
           const oldItem = this.dropCol[evt.oldIndex];
+          const colMaxLength = this.dropCol.length;
           this.dropCol.splice(evt.oldIndex, 1);
           this.dropCol.splice(evt.newIndex, 0, oldItem);
+
           this.$forceUpdate();
         },
       });
