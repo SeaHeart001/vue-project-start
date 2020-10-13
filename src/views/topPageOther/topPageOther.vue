@@ -1,8 +1,11 @@
 <template>
   <div>
-    <dragTable  
+
+    <dragTable 
+      v-if="showTable" 
+      @reloadTable="reloadTable"
       :tableData="tableData" 
-      :col="col" 
+      :col.sync="col" 
       border 
       row-key="id" 
       align="left">
@@ -27,6 +30,7 @@ export default {
 
   data() {
     return {
+      showTable: true,
       tableData: [
         {
           id: "1",
@@ -84,8 +88,14 @@ export default {
   methods: {
     showId(id) {
       alert(id);
-      console.log(this.$children[0].dropCol)
     },
+
+    reloadTable(){
+      this.showTable = false;
+      this.$nextTick( _ => {
+        this.showTable = true;
+      })
+    }
   },
 };
 </script>

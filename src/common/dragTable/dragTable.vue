@@ -1,34 +1,38 @@
 <template>
-  <el-table :id="`t${tableId}`" :data="tableData" v-bind="$attrs">
-    <!-- 拖拽表格我感觉序号没啥意义-->
-    <template v-for="(item, index) in col">
-      <!-- 操作列/自定义列 -->
-      <el-table-column
-        v-if="item.isSlot"
-        :key="`col_${index}`"
-        :prop="dropCol[index].prop"
-        :label="item.label"
-      >
-        <template v-if="item.isSlotHeader" slot="header"> 
-          <slot :name="item.prop + `Header`" :data="item"></slot>
-        </template>
-        <template slot-scope="scope"> 
-          <slot :name="item.prop" :data="tableData[scope.$index]"></slot>
-        </template>
-        
-      </el-table-column>
-      
-      <!-- 普通列 -->
-      <el-table-column
-        v-else
-        :key="`col_${index}`"
-        :prop="dropCol[index].prop"
-        :label="item.label"
-        v-bind="item"
-      >
-      </el-table-column>
-    </template>
-  </el-table>
+  <div>
+    <el-table :id="`t${tableId}`" :data="tableData" v-bind="$attrs">
+      <!-- 拖拽表格我感觉序号没啥意义-->
+      <template v-for="(item, index) in col">
+        <!-- 操作列/自定义列 -->
+        <el-table-column
+          v-if="item.isSlot"
+          :key="`col_${index}`"
+          :prop="dropCol[index].prop"
+          :label="item.label"
+        >
+          <template v-if="item.isSlotHeader" slot="header">
+            <slot :name="item.prop + `Header`" :data="item"></slot>
+          </template>
+          <template slot-scope="scope">
+            <slot :name="item.prop" :data="tableData[scope.$index]"></slot>
+          </template>
+        </el-table-column>
+
+        <!-- 普通列 -->
+        <el-table-column
+          v-else
+          :key="`col_${index}`"
+          :prop="dropCol[index].prop"
+          :label="item.label"
+          v-bind="item"
+        >
+        </el-table-column>
+      </template>
+    </el-table>
+    <div>
+      {{ dropCol }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -103,8 +107,8 @@ export default {
           const colMaxLength = this.dropCol.length;
           this.dropCol.splice(evt.oldIndex, 1);
           this.dropCol.splice(evt.newIndex, 0, oldItem);
-
-          this.$forceUpdate();
+          this.$emit('update:col', JSON.parse(JSON.stringify(this.dropCol)));
+          this.$emit('reloadTable');
         },
       });
     },
