@@ -1,14 +1,14 @@
 <template>
   <div>
-    <el-table :id="`t${tableId}`" :data="tableData" v-bind="$attrs">
+    <el-table :id="`t${tableId}`" :data="tableData" v-bind="$attrs" v-on="$listeners">
       <!-- 拖拽表格我感觉序号没啥意义-->
       <template v-for="(item, index) in col">
         <!-- 操作列/自定义列 -->
         <el-table-column
           v-if="item.isSlot"
           :key="`col_${index}`"
-          :prop="dropCol[index].prop"
-          :label="item.label"
+          v-bind="dropCol[index]"
+          
         >
           <template v-if="item.isSlotHeader" slot="header">
             <slot :name="item.prop + `Header`" :data="item"></slot>
@@ -22,9 +22,7 @@
         <el-table-column
           v-else
           :key="`col_${index}`"
-          :prop="dropCol[index].prop"
-          :label="item.label"
-          v-bind="item"
+          v-bind="dropCol[index]"
         >
         </el-table-column>
       </template>

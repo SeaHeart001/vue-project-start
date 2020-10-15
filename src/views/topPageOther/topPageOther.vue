@@ -1,16 +1,25 @@
 <template>
   <div>
-
-    <dragTable 
-      v-if="showTable" 
+    <dragTable
+      v-if="showTable"
       @reloadTable="reloadTable"
-      :tableData="tableData" 
-      :col.sync="col" 
-      border 
-      row-key="id" 
-      align="left">
+      :tableData="tableData"
+      :col.sync="col"
+      border
+      row-key="id"
+      align="left"
+      @sort-change="sortchange"
+      @filter-change="filterChange"
+    >
+      <template slot="dateHeader">
+        <span>日期表头</span>
+      </template>
+      <template slot="date" slot-scope="scope">
+        {{ "日期: " + scope.data.date }}
+      </template>
+
       <template slot="oprationHeader">
-        <span>操作111222</span>
+        <span>操作自定义</span>
       </template>
       <template slot="opration" slot-scope="scope">
         <el-button size="mini" @click="showId(scope.data.id)">{{
@@ -18,7 +27,6 @@
         }}</el-button>
       </template>
     </dragTable>
-  
   </div>
 </template>
 
@@ -62,14 +70,29 @@ export default {
         {
           label: "日期",
           prop: "date",
+          isSlot: true,
+          isSlotHeader: true,
         },
         {
           label: "姓名",
           prop: "name",
+          columnKey: "name",
+          filters: [
+            { text: "王小虎11", value: "王小虎1" },
+            { text: "王小虎22", value: "王小虎2" },
+            { text: "王小虎33", value: "王小虎3" },
+            { text: "王小虎44", value: "王小虎4" }
+          ],
+          filterMethod: function(value, row, column){
+            //为什么进不去这个方法呢呢？
+            const property = column["property"];
+            console.log(value, row, column, 'filterMethod');
+          },
         },
         {
           label: "地址",
           prop: "address",
+          sortable: true
         },
         {
           label: "操作",
@@ -86,16 +109,22 @@ export default {
   },
 
   methods: {
+    sortchange({ column, prop, order }){
+      console.log({ column, prop, order })
+    },
+    filterChange(filter){
+      console.log(filter)
+    },
     showId(id) {
       alert(id);
     },
 
-    reloadTable(){
+    reloadTable() {
       this.showTable = false;
-      this.$nextTick( _ => {
+      this.$nextTick((_) => {
         this.showTable = true;
-      })
-    }
+      });
+    },
   },
 };
 </script>
