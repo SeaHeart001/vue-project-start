@@ -18,7 +18,7 @@
 import menuItem from "./menuItem";
 export default {
   name: "menuNav",
-  data(){
+  data () {
     return {
       //activeRouteName: ''
     }
@@ -38,9 +38,11 @@ export default {
     handleOpen(key, keyPath) {
       console.log(key, keyPath, 'OPEN');
     },
+    
     handleClose(key, keyPath) {
       console.log(key, keyPath, 'CLOSE');
     },
+
     toRouter(route){
       console.log(route);
       this.$router.push({

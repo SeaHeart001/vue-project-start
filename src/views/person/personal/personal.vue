@@ -4,30 +4,22 @@
     <el-button @click="toErrorRouteByName">toErrorRouteByName</el-button>
     <el-button @click="toErrorRouteByPath">toErrorRouteByPath</el-button>
     <div class="span-input-wrap">
-        aaaaa
-        <EditSpan
-        :defaultValue="defaultValue1"
-        @valueChange="editValue1"></EditSpan>  
-        bbbbb
-        <EditSpan
-        :defaultValue="defaultValue2"
-        @valueChange="editValue2"></EditSpan>
+        <EditModule v-model="newVv1"></EditModule>aaa<EditModule v-model="newVv2"></EditModule>bbb
+        <hr>
+        {{newVv1}}--{{newVv2}}
     </div>
   </div>
 </template>
 
 <script>
-import EditSpan from '@/common/EditSpan/EditSpan';
+import EditModule from '@/common/EditSpan/EditModule';
 export default {
   name: "personal",
-  components: { EditSpan },
+  components: { EditModule },
   data() {
     return {
-      editableValue1: "",
-      defaultValue1: "111222",
-
-      editableValue2: "",
-      defaultValue2: "333444"
+      newVv1: "123",
+      newVv2: "456"
     };
   },
   mounted() {
@@ -44,20 +36,13 @@ export default {
       this.$router.push({
         path: './adasdad'
       })
-    },
-
-    editValue1(value){
-      this.editableValue1 = value;
-      console.log(value, 'editValueeditValue1111')
-    },
-
-    editValue2(value){
-      this.editableValue2 = value;
-      console.log(value, 'editValueeditValue2222')
-    },
+    }
   }
 };
 </script>
 
 <style>
+.span-input-wrap{
+  text-align: left;
+}
 </style>

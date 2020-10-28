@@ -14,11 +14,11 @@
 import Vue from "vue";
 import router from "@/router";
 //import httpServer from '@/http/http';
-import EditSpan from "../common/EditSpan/EditSpan";
+
 export default {
   name: "HelloWorld",
   components: {
-    EditSpan
+    
   },
   data() {
     return {
