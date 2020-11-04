@@ -1,10 +1,13 @@
 <template>
   <div>
     <div>personal</div>
-    <el-button @click="toErrorRouteByName">toErrorRouteByName</el-button>
-    <el-button @click="toErrorRouteByPath">toErrorRouteByPath</el-button>
+    <el-button @click="toErrorRouteByName">toErrorRouteByName1</el-button>
+    <el-button @click="toErrorRouteByPath">toErrorRouteByPath2</el-button>
     <div class="span-input-wrap">
-        <EditModule v-model="newVv1"></EditModule>aaa<EditModule v-model="newVv2"></EditModule>bbb
+        <EditModule v-model="newVv1"></EditModule>
+        aaa
+        <EditModule v-model="newVv2"></EditModule>
+        bbb
         <hr>
         {{newVv1}}--{{newVv2}}
     </div>
