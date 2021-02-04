@@ -1,7 +1,7 @@
 {
     "menuList" : [
         {
-            "name": "个人中心",
+            "name": "包节点菜单一",
             "id": 1,
             "englishName": "person",
             "component": "person",
@@ -75,7 +75,7 @@
             ]
         },
         {
-            "name": "系统模块",
+            "name": "包节点菜单二",
             "id": 2,
             "englishName": "system",
             "component": "system",

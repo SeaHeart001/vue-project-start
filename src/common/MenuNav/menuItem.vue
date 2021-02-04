@@ -8,6 +8,7 @@
       :key="menuMap.component"
       @click="clickRouter(menuMap)"
     >
+    <!-- element menu组件禁止了包节点菜单点击事件并重写了方法，若需要点击包节点菜单跳到第一个子菜单，@click.native -->
       <template slot="title">
         <i class="el-icon-menu"></i>
         <span>{{menuMap.name}}</span>

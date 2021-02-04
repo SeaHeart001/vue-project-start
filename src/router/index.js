@@ -7,6 +7,8 @@ import module from '@/default/module'
 
 import personModule from '@/views/person';
 //console.log(personModule, 'personModule');
+import systemModule from '@/views/system';
+//console.log(systemModule, 'systemModule');
 
 import topPageOther from '@/views/topPageOther/topPageOther'
 
@@ -25,6 +27,7 @@ Vue.use(Router)
 
 let menu = {
   ...personModule,
+  ...systemModule,
   
   topPageOther
 }

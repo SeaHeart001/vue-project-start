@@ -1,6 +1,6 @@
 <template>
   <div class="login-wrap">
-    <img src="../assets/logo.png" />
+    <!-- <img src="../assets/logo.png" /> -->
     <div class="user-login-entry">
       <h1>vue start</h1>
       <el-input></el-input>
@@ -55,12 +55,15 @@ export default {
         this.$storage.set("menuList", res.data);
         this.$creatRouter(res.data, () => {
           //console.log(this);
-          //replace不生成历史记录
-          this.$router.replace({
+          //跳转可以不生成历史记录：this.$router.replace
+          this.$router.push({
             name: res.data[0].name
           });
         });
       });
+
+
+      
     }
   }
 };

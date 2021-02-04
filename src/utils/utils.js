@@ -32,6 +32,9 @@ function getRouter(menuList, level, parent = {}) {
 
     let component = router.menu[item.englishName];
     if (item.isParent == 1) {
+
+
+      
       //!component && item.isParent == 1
       //上面表示如果找到对应路由壳子组件, 则用自己创建的, 没找到则-->
       //生成路由壳子

@@ -8,6 +8,7 @@
 
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapGetters, mapMutations, mapActions } = createNamespacedHelpers('app');
+
 export default {
   name: 'App',
   computed: {
