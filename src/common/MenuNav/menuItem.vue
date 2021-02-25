@@ -11,7 +11,7 @@
     <!-- element menu组件禁止了包节点菜单点击事件并重写了方法，若需要点击包节点菜单跳到第一个子菜单，@click.native -->
       <template slot="title">
         <i class="el-icon-menu"></i>
-        <span>{{menuMap.name}}</span>
+        <span>{{menuMap.menuName}}</span>
       </template>
       <template v-for="menu in menuMap.children">
         <menuItem :toRouter="toRouter" :menuMap="menu" :key="menu.id" v-if="menu"></menuItem>
@@ -26,7 +26,7 @@
       @click="clickRouter(menuMap)"
     >
       <i class="el-icon-menu"></i>
-      <span slot="title">{{menuMap.name}}</span>
+      <span slot="title">{{menuMap.menuName}}</span>
     </el-menu-item>
   </div>
 </template>

@@ -1,9 +1,9 @@
 {
     "menuList" : [
         {
-            "name": "包节点菜单一",
+            "menuName": "包节点菜单一",
             "id": 1,
-            "englishName": "person",
+            "pathUrl": "person",
             "component": "person",
             "isShowPage": 1,
             "isParent": 1,
@@ -11,9 +11,9 @@
             "icon": "el-icon-menu",
             "children": [
                 {
-                    "name": "个人中心首页",
+                    "menuName": "个人中心首页",
                     "id": 3,
-                    "englishName": "personal",
+                    "pathUrl": "personal",
                     "component": "personal",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -21,9 +21,9 @@
                     "icon": "el-icon-menu"
                 },
                 {
-                    "name": "个人统计",
+                    "menuName": "个人统计",
                     "id": 5,
-                    "englishName": "personCount",
+                    "pathUrl": "personCount",
                     "component": "personCount",
                     "isShowPage": 1,
                     "isParent": 1,
@@ -31,9 +31,9 @@
                     "icon": "el-icon-menu",
                     "children": [
                         {
-                            "name": "消费统计",
+                            "menuName": "消费统计",
                             "id": 6,
-                            "englishName": "payCount",
+                            "pathUrl": "payCount",
                             "component": "payCount",
                             "isShowPage": 0,
                             "isParent": 0,
@@ -41,9 +41,9 @@
                             "icon": "el-icon-menu"
                         },
                         {
-                            "name": "好友统计",
+                            "menuName": "好友统计",
                             "id": 7,
-                            "englishName": "friendCount",
+                            "pathUrl": "friendCount",
                             "component": "friendCount",
                             "isShowPage": 1,
                             "isParent": 0,
@@ -53,9 +53,9 @@
                     ]
                 },
                 {
-                    "name": "个人列表",
+                    "menuName": "个人列表",
                     "id": 11,
-                    "englishName": "personalList",
+                    "pathUrl": "personalList",
                     "component": "personalList",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -63,9 +63,9 @@
                     "icon": "el-icon-menu" 
                 },
                 {
-                    "name": "个人管理",
+                    "menuName": "个人管理",
                     "id": 12,
-                    "englishName": "personalManage",
+                    "pathUrl": "personalManage",
                     "component": "personalManage",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -75,9 +75,9 @@
             ]
         },
         {
-            "name": "包节点菜单二",
+            "menuName": "包节点菜单二",
             "id": 2,
-            "englishName": "system",
+            "pathUrl": "system",
             "component": "system",
             "isShowPage": 1,
             "isParent": 1,
@@ -85,9 +85,9 @@
             "icon": "el-icon-menu",
             "children": [
                 {
-                    "name": "系统首页",
+                    "menuName": "系统首页",
                     "id": 4,
-                    "englishName": "systemManage",
+                    "pathUrl": "systemManage",
                     "component": "systemManage",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -95,9 +95,9 @@
                     "icon": "el-icon-menu"
                 },
                 {
-                    "name": "系统模型",
+                    "menuName": "系统模型",
                     "id": 8,
-                    "englishName": "systemModel",
+                    "pathUrl": "systemModel",
                     "component": "systemModel",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -105,9 +105,9 @@
                     "icon": "el-icon-menu"
                 },
                 {
-                    "name": "系统模型详情",
+                    "menuName": "系统模型详情",
                     "id": 9,
-                    "englishName": "systemModelDetial",
+                    "pathUrl": "systemModelDetial",
                     "component": "systemModelDetail",
                     "isShowPage": 0,
                     "isParent": 0,
@@ -115,9 +115,9 @@
                     "icon": "el-icon-menu"
                 },
                 {
-                    "name": "其他模块",
+                    "menuName": "其他模块",
                     "id": 10,
-                    "englishName": "systemOther",
+                    "pathUrl": "systemOther",
                     "component": "systemOther",
                     "isShowPage": 0,
                     "isParent": 0,
@@ -127,9 +127,9 @@
             ]
         },
         {
-            "name": "一级页面菜单",
+            "menuName": "一级页面菜单",
             "id": 11,
-            "englishName": "topPageOther",
+            "pathUrl": "topPageOther",
             "component": "topPageOther",
             "isShowPage": 1,
             "isParent": 0,
@@ -141,15 +141,15 @@
     "treeList": [
         {
           "id": 1,
-          "name": "aa",
+          "menuName": "aa",
           "child": [
             {
               "id": 2,
-              "name": "ab",
+              "menuName": "ab",
               "child": [
                 {
                   "id": 5,
-                  "name": "abc",
+                  "menuName": "abc",
                   "child": []
                 }
               ]
@@ -158,11 +158,11 @@
         },
         {
           "id": 3,
-          "name": "ba",
+          "menuName": "ba",
           "child": [
             {
               "id": 4,
-              "name": "bb",
+              "menuName": "bb",
               "child": []
             }
           ]

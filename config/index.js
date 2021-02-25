@@ -56,7 +56,8 @@ module.exports = {
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false, //close sourcemap
+
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

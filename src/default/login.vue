@@ -53,7 +53,7 @@ export default {
       }).then(res => {
         //console.log(res.data, "menuList");
         this.$storage.set("menuList", res.data);
-        this.$creatRouter(res.data, () => {
+        this.$creatRouter(res.data, () => { 
           //console.log(this);
           //跳转可以不生成历史记录：this.$router.replace
           this.$router.push({

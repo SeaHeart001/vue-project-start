@@ -19,22 +19,17 @@ function getRouter(menuList, level, parent = {}) {
   level++;
 
   menuList.forEach(item => {
-    let chineseName = item.name;
-    item.chineseName = chineseName;
-    item.name = item.englishName;
-
-    item.path = item.name
+    item.name = item.pathUrl;
+    item.path = item.pathUrl
     if (level === 1) {
       item.fullPath = "/module/" + item.path
     } else {
       item.fullPath = parent.fullPath + '/' + item.path
     }
 
-    let component = router.menu[item.englishName];
+    let component = router.menu[item.pathUrl];
     if (item.isParent == 1) {
 
-
-      
       //!component && item.isParent == 1
       //上面表示如果找到对应路由壳子组件, 则用自己创建的, 没找到则-->
       //生成路由壳子
@@ -44,7 +39,7 @@ function getRouter(menuList, level, parent = {}) {
     }
     item.component = component;
     if (item.children && item.children.length > 0) {
-      item.redirect = item.fullPath + '/' + item.children[0].englishName,
+      item.redirect = item.fullPath + '/' + item.children[0].pathUrl,
         getRouter(item.children, level, item)
     }
   });
