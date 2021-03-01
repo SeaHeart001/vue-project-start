@@ -19,6 +19,7 @@ function getRouter(menuList, level, parent = {}) {
   level++;
 
   menuList.forEach(item => {
+    console.log(item.pathUrl);
     item.name = item.pathUrl;
     item.path = item.pathUrl
     if (level === 1) {

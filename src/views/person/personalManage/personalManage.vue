@@ -12,11 +12,11 @@ import myTab from "./components/myTab";
 // import temp1 from "./components/temp1";
 // import temp2 from "./components/temp2";
 
-//const myTab = () => import('./components/myTab');
-const temp1 = () => import('./components/temp1');
-const temp2 = () => import('./components/temp2');
-
-
+// const myTab = () => import('./components/myTab');
+// const temp1 = () => import('./components/temp1');
+// const temp2 = () => import('./components/temp2');
+import temp1 from './components/temp1';
+import temp2 from './components/temp2';
 
 export default {
   name: "personnalManage",

@@ -63,7 +63,7 @@ router.router.beforeEach((to, from, next) => {
     if(!authorization){
 
       if(from.name === 'login'){
-        next('/');
+        window.location.href = './';
         return
       }
       

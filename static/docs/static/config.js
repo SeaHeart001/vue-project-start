@@ -1,1 +1,0 @@
-var basePath = window.top.location.origin;
