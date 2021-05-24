@@ -79,17 +79,26 @@ function creatRouter(menuData, callback) {
   callback && callback()
 }
 
-function listTotree(list, id) {
-  let result = list
-    .filter(item => {
-      return item.pId === id;
+function listTotree(origins, options={}){
+  let filterids = [];
+  const idKey = options.idKey || 'id';
+  const pIdKey = options.pIdKey || 'pId';
+  const childrenKey = options.childrenKey || 'children';
+  origins.forEach( item1 => {
+    let origin1 = item1;
+    origin1[childrenKey] = [];
+    origins.forEach( item2 => {
+      let origin2 = item2;
+      if(origin2[pIdKey] === origin1[idKey]){
+        origin1[childrenKey].push(origin2);
+        filterids.push(origin2[idKey])
+      }
     })
-    .map(res => {
-      let resObj = JSON.parse(JSON.stringify(res));
-      resObj.children = listTotree(list, res.id);
-      return resObj;
-    });
-  return result;
+  })
+  if(item1[childrenKey].length === 0){
+    item1[childrenKey] = ''
+  }
+  return origins.filter(item => filterids.indexOf(item[idKey]) === -1)
 }
 
 function treeToList(tree, arr) {
