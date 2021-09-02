@@ -3,7 +3,7 @@
         {
             "name": "包节点菜单一",
             "id": 1,
-            "englishName": "person",
+            "pathName": "person",
             "component": "person",
             "isShowPage": 1,
             "isParent": 1,
@@ -13,7 +13,7 @@
                 {
                     "name": "个人中心首页",
                     "id": 3,
-                    "englishName": "personal",
+                    "pathName": "personal",
                     "component": "personal",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -23,7 +23,7 @@
                 {
                     "name": "个人统计",
                     "id": 5,
-                    "englishName": "personCount",
+                    "pathName": "personCount",
                     "component": "personCount",
                     "isShowPage": 1,
                     "isParent": 1,
@@ -33,7 +33,7 @@
                         {
                             "name": "消费统计",
                             "id": 6,
-                            "englishName": "payCount",
+                            "pathName": "payCount",
                             "component": "payCount",
                             "isShowPage": 0,
                             "isParent": 0,
@@ -43,7 +43,7 @@
                         {
                             "name": "好友统计",
                             "id": 7,
-                            "englishName": "friendCount",
+                            "pathName": "friendCount",
                             "component": "friendCount",
                             "isShowPage": 1,
                             "isParent": 0,
@@ -55,7 +55,7 @@
                 {
                     "name": "个人列表",
                     "id": 11,
-                    "englishName": "personalList",
+                    "pathName": "personalList",
                     "component": "personalList",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -65,7 +65,7 @@
                 {
                     "name": "个人管理",
                     "id": 12,
-                    "englishName": "personalManage",
+                    "pathName": "personalManage",
                     "component": "personalManage",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -77,7 +77,7 @@
         {
             "name": "包节点菜单二",
             "id": 2,
-            "englishName": "system",
+            "pathName": "system",
             "component": "system",
             "isShowPage": 1,
             "isParent": 1,
@@ -87,7 +87,7 @@
                 {
                     "name": "系统首页",
                     "id": 4,
-                    "englishName": "systemManage",
+                    "pathName": "systemManage",
                     "component": "systemManage",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -97,7 +97,7 @@
                 {
                     "name": "系统模型",
                     "id": 8,
-                    "englishName": "systemModel",
+                    "pathName": "systemModel",
                     "component": "systemModel",
                     "isShowPage": 1,
                     "isParent": 0,
@@ -107,7 +107,7 @@
                 {
                     "name": "系统模型详情",
                     "id": 9,
-                    "englishName": "systemModelDetial",
+                    "pathName": "systemModelDetial",
                     "component": "systemModelDetail",
                     "isShowPage": 0,
                     "isParent": 0,
@@ -117,7 +117,7 @@
                 {
                     "name": "其他模块",
                     "id": 10,
-                    "englishName": "systemOther",
+                    "pathName": "systemOther",
                     "component": "systemOther",
                     "isShowPage": 0,
                     "isParent": 0,
@@ -129,7 +129,7 @@
         {
             "name": "一级页面菜单",
             "id": 11,
-            "englishName": "topPageOther",
+            "pathName": "topPageOther",
             "component": "topPageOther",
             "isShowPage": 1,
             "isParent": 0,

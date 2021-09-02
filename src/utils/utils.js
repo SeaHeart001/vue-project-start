@@ -19,9 +19,9 @@ function getRouter(menuList, level, parent = {}) {
   level++;
 
   menuList.forEach(item => {
-    let chineseName = item.name;
-    item.chineseName = chineseName;
-    item.name = item.englishName;
+    let menuName = item.name;
+    item.menuName = menuName;
+    item.name = item.pathName;
 
     item.path = item.name
     if (level === 1) {
@@ -30,7 +30,7 @@ function getRouter(menuList, level, parent = {}) {
       item.fullPath = parent.fullPath + '/' + item.path
     }
 
-    let component = router.menu[item.englishName];
+    let component = router.menu[item.pathName];
     if (item.isParent == 1) {
 
 
@@ -44,7 +44,7 @@ function getRouter(menuList, level, parent = {}) {
     }
     item.component = component;
     if (item.children && item.children.length > 0) {
-      item.redirect = item.fullPath + '/' + item.children[0].englishName,
+      item.redirect = item.fullPath + '/' + item.children[0].pathName,
         getRouter(item.children, level, item)
     }
   });
